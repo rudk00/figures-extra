@@ -81,24 +81,22 @@ class Quadrilateral extends Figure {
         return new Point(x,y);
     }
     @Override
-    public boolean isTheSame(Figure figure){
-        if (this == figure) {
-            return true;
+    public boolean isTheSame(Figure figure) {
+        if (figure == null) return false;
+        if (figure == this) return true;
+        if (figure instanceof Quadrilateral) {
+            if (a.isTheSame(((Quadrilateral)figure).a) || a.isTheSame(((Quadrilateral)figure).b) || a.isTheSame(((Quadrilateral)figure).c) || a.isTheSame(((Quadrilateral)figure).d)){
+                if (b.isTheSame(((Quadrilateral)figure).a) || b.isTheSame(((Quadrilateral)figure).b) || b.isTheSame(((Quadrilateral)figure).c) || b.isTheSame(((Quadrilateral)figure).d)){
+                    if (c.isTheSame(((Quadrilateral)figure).a) || c.isTheSame(((Quadrilateral)figure).b) || c.isTheSame(((Quadrilateral)figure).c) || c.isTheSame(((Quadrilateral)figure).d)){
+                        if (d.isTheSame(((Quadrilateral)figure).a) || d.isTheSame(((Quadrilateral)figure).b) || d.isTheSame(((Quadrilateral)figure).c) || d.isTheSame(((Quadrilateral)figure).d)){
+                            return true;
+                        }
+                    }
+                }
+            }
         }
-        if (figure == null || getClass() != figure.getClass()) {
-            return false;
-        }
-        Quadrilateral fig = (Quadrilateral) figure;
-        if (Math.abs(x1 - fig.x1) < 1e-15) x1 = fig.x1;
-        if (Math.abs(x2 - fig.x2) < 1e-15) x2 = fig.x2;
-        if (Math.abs(x3 - fig.x3) < 1e-15) x3 = fig.x3;
-        if (Math.abs(x4 - fig.x4) < 1e-15) x4 = fig.x4;
-        if (Math.abs(y1 - fig.y1) < 1e-15) y1 = fig.y1;
-        if (Math.abs(y2 - fig.y2) < 1e-15) y2 = fig.y2;
-        if (Math.abs(y3 - fig.y3) < 1e-15) y3 = fig.y3;
-        if (Math.abs(y4 - fig.y4) < 1e-15) y4 = fig.y4;
-        return x1 == fig.x1 && y1 == fig.y1 && x2 == fig.x2 && y2 == fig.y2
-                && x3 == fig.x3 && y3 == fig.y3 && x4 == fig.x4 && y4 == fig.y4;
+        return false;
+
     }
 }
 

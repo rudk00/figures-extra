@@ -17,4 +17,11 @@ class Point {
         return y;
     }
 
+    public boolean isTheSame (Point o){
+        if (o == null) return false;
+        if (o == this) return true;
+        if (Math.abs(this.x - o.getX()) <= 1e-15 && Math.abs(this.y - o.getY()) <= 1e-15) return true;
+        return false;
+    }
+
 }
